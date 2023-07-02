@@ -1,20 +1,27 @@
 #include "saluto.h"
 
+
+/** malplena objekto */
 const struct Saluto salutoMalplena = {0};
 
-struct Saluto* faruSaluto()
+
+/** defauxlta konstruanto */
+struct Saluto* Saluto()
 {
-	struct Saluto* obj = malloc( sizeof(struct Saluto) );
+	struct Saluto* obj = calloc( 1, sizeof(struct Saluto) );
 	if (obj == NULL) {
-		return NULL;
+		return 0;
 	}
 
-	*obj = salutoMalplena;
 	obj->donuSekvaChar = donuSekvaChar;
 
 	return obj;
 }
 
+
+/* funkcioj */
+
+/** proceduro por akiri sekvan simbolon */
 unsigned char donuSekvaChar(char* const simbolo)
 {
 	*simbolo = getchar();

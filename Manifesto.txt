@@ -1,0 +1,15 @@
+GXENERALA REGULAROJ
+
+1) Sole ANSI-C.
+2) Nenioj antauxtraktila procesoj, makrooj.
+3) Maksimume tradiciaj principaj de OOP (kiel en C++ aux Java ).
+4) Tutaj kernaj datentipaj asignigxas en la amaso.
+
+
+STILO DE KODO
+
+1) skribu kiel cxi tie
+	1.1) "CamelCase" por datentipaj nomoj -- JenEkzemplo
+	1.2) "camelCase" por variablaj kaj funkciaj nomoj -- jenEkzemplo
+	1.3) "SCREAMING_SNAKE_CASE" por makrooj -- JEN_EKZEMPLO
+	1.4) "snake_case" por dosieroj nomoj -- jen_ekzemplo
