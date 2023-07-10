@@ -1,6 +1,6 @@
 CC=cc
 
-ARGS=-std=c89 -Wall -Wextra -Wno-unused-parameter -Wno-unused-variable
+ARGS=-std=c89 -pedantic -Wshadow -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-variable
 
 
 all: saluto.run
