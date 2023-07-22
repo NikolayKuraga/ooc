@@ -5,7 +5,7 @@
 
 int main()
 {
-	struct Saluto* saluto = Saluto();
+	struct Saluto* saluto = FaruSaluton();
 	char simbolo = 0;
 
 	puts("KuLisp");
@@ -16,14 +16,14 @@ int main()
 
 		printf("preskaux kutima Lispo> ");
 
-		saluto->donuSekvaChar(&simbolo);
+		saluto->akiruSekvanCharon(saluto, &simbolo);
 		if ( simbolo == '\n' ) {
 			continue;
 		}
 		printf("%c", simbolo);
 
 		while (1) {
-			saluto->donuSekvaChar(&simbolo);
+			saluto->akiruSekvanCharon(saluto, &simbolo);
 			printf("%c", simbolo);
 			if ( simbolo == '\n' ) {
 				break;

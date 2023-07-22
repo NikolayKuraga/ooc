@@ -39,7 +39,7 @@ agordu(
 
 
 struct TabeloDeCharoj*
-TabeloDeCharoj(
+FaruTabelonDeCharoj(
 	const unsigned int tabelaLongo)
 {
 	struct TabeloDeCharojTuta* memo =
@@ -55,3 +55,21 @@ TabeloDeCharoj(
 
 	return ((struct TabeloDeCharoj*) memo);
 }
+
+
+/* const struct TabeloDeCharoj TabeloDeCharoj = { */
+
+/* 	akiruLongon, */
+/* 	akiru, */
+/* 	agordu */
+/* }; */
+
+
+/* const struct TabeloDeCharojTuta TabeloDeCharojTuta = { */
+
+/* 	TabeloDeCharoj, */
+/* 	tabelaLongo, */
+	
+/* 	nuligu, */
+/* 	alkrementu */
+/* }; */

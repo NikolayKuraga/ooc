@@ -1,21 +1,25 @@
-CC=cc
+CK := cc
+KFLAGOJ := -std=c89 -pedantic -Wshadow -Wall -Wextra -Wno-incompatible-pointer-types -Wno-unused-parameter -Wno-unused-variable
 
-ARGS=-std=c89 -pedantic -Wshadow -Wall -Wextra -Werror -Wno-unused-parameter -Wno-unused-variable
+PAKOJ := pakoj
+KONSTRUO := konstruo
+OBJDOSUJO := $(KONSTRUO)/objektoj
+INKLUDATA :=
+BINARO := $(KONSTRUO)/saluto.elf
 
+KONDICXOJ := \
+$(OBJDOSUJO)/tabelo_de_charoj.o \
+$(OBJDOSUJO)/saluto.o
 
-all: saluto.run
+cxio: $(BINARO)
 
-saluto.run: main.o saluto.o tabelo_de_charoj.o
-	$(CC) main.o saluto.o tabelo_de_charoj.o -o saluto.run
+include $(PAKOJ)/*/Makefile
 
-main.o: main.c
-	$(CC) $(ARGS) -c main.c -o main.o
+$(BINARO): $(KONDICXOJ) | $(KONSTRUO)
+	$(CK) $(KFLAGOJ) $(INKLUDATA) cxefa.c $(KONDICXOJ) -o $(BINARO)
 
-saluto.o: saluto.c saluto.h
-	$(CC) $(ARGS) -c saluto.c -o saluto.o
-
-tabelo_de_charoj.o: tabelo_de_charoj.c tabelo_de_charoj.h
-	$(CC) $(ARGS) -c tabelo_de_charoj.c -o tabelo_de_charoj.o
+$(KONSTRUO) $(OBJDOSUJO):
+	mkdir -p $@
 
 clean:
-	$(RM) *.o *.run
+	rm -rf $(KONSTRUO)/*

@@ -8,7 +8,7 @@
 /*
  * KLASA TUTA STRUKTURO
  */
-struct TabeloDeCharojTuta {
+extern const struct TabeloDeCharojTuta {
 
 	/* remburajxo estas loko por publikaj metodoj kaj kampoj */
 	struct TabeloDeCharoj remburajxo;
@@ -41,11 +41,12 @@ struct TabeloDeCharojTuta {
 	void
 	(*alkrementu)(
 		struct TabeloDeCharojTuta* memo);
-};
+
+} TabeloDeCharojTuta;
 
 
-#include <stdlib.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 #endif /* TABELO_DE_CHAROJ__TUTA__H */

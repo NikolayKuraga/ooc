@@ -8,14 +8,14 @@
  *     tabela longo
  */
 struct TabeloDeCharoj*
-TabeloDeCharoj(
+FaruTabelonDeCharoj(
 	const unsigned int longo);
 
 
 /*
  * KLASA PUBLIKA STRUKTURO
  */
-struct TabeloDeCharoj {
+extern const struct TabeloDeCharoj {
 
 	/*
 	 * akiruLongon
@@ -57,7 +57,8 @@ struct TabeloDeCharoj {
 		/* memo */ struct TabeloDeCharoj* memo,
 		/* enira */ const unsigned int i,
 		/* enira */ const char sim);
-};
+
+} TabeloDeCharoj;
 
 
 #endif /* TABELO_DE_CHAROJ__H */
