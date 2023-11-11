@@ -1,5 +1,5 @@
-#ifndef TABELO_DE_CHAROJ__TUTA__H
-#define TABELO_DE_CHAROJ__TUTA__H
+#ifndef TABELO_DE_CHAROJ_TUTA_H
+#define TABELO_DE_CHAROJ_TUTA_H
 
 
 #include "tabelo_de_charoj.h"
@@ -49,4 +49,4 @@ extern const struct TabeloDeCharojTuta {
 #include <stdlib.h>
 
 
-#endif /* TABELO_DE_CHAROJ__TUTA__H */
+#endif /* TABELO_DE_CHAROJ_TUTA_H */

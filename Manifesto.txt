@@ -1,24 +1,34 @@
-GXENERALA REGULAROJ
+GXENERALA REGULAROJ DE BIBLIOTEKO
+versio estas 0.1
 
 
-1) Sole ANSI-C.
-2) Nenioj antauxtraktiloj, makrooj.
-3) Maksimume tradiciaj principaj de OOP (identa C++-a kaj Java-a OOP).
-4) Tutaj kernaj datentipaj asignigxas en la amaso.
+CELO
+
+Verki biblioteko kiu prezentas objekteman programadon por C programada
+lingvo.
+
+
+LIMIGOJ
+
+1) Sole ANSI-C. Ekzemple okaze uzo de GCC aldonu '-ansi' aux '-std=c90'.
+2) C norma biblioteko estas lica por uzado dume.
+3) Makefile-oj uzigxas kiel muntiloj.
+4) Esperanto estas la cxefa lingvo en la projekto (mi volis lerni tion).
+Tio signifas, ke Esperanto devas uzigxi en cxia okazo krom okazo en kiel
+angla lingvo uzigxas defauxlte.
 
 
 STILO DE KODO
 
-
-1) skribu kiel cxi tie:
-	1.1) "CamelCase" por datentipaj nomoj -- JenEkzemplo.
-	1.2) "camelCase" por variablaj kaj funkciaj nomoj -- jenEkzemplo.
-	1.3) "SCREAMING_SNAKE_CASE" por makrooj -- JEN_EKZEMPLO.
-	1.4) "snake_case" por dosieroj nomoj -- jen_ekzemplo.
+1) skribu nomojn kiel cxi tie:
+  1.1) "EkmajusklaKamelaUskleco" estas por datentipaj nomoj.
+  1.2) "ekminusklaKamelaUskleco" estas por variablaj kaj funkciaj nomoj.
+  1.3) "MAJUSKLA_SERPENTA_USKLECO" estas por makrooj.
+  1.4) "minuskla_serpenta_uskleco" estas por dosieroj nomoj.
 
 2) klasaj kampoj:
-	2.1) Metodnomoj estas verboj cxiam.
-	2.2) Metodnomo estas sama cxiam (en strukturoj, en kapdosiero, cxie).
-	2.3) Variabloj estas substantivo cxiam.
-	2.4) Variablo estas sama cxiam (en strukturoj, en kapdosiero, cxie).
-	2.5) Metodoj kaj variabloj ne havas saman nomon.
+  2.1) Metodnomoj estas verboj cxiam.
+  2.2) Metodnomo estas sama cxiam (en strukturoj, en kapdosiero, cxie).
+  2.3) Variabloj estas substantivo cxiam.
+  2.4) Variablo estas sama cxiam (en strukturoj, en kapdosiero, cxie).
+

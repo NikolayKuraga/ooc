@@ -1,22 +1,24 @@
 CK := cc
-KFLAGOJ := -std=c89 -pedantic -Wshadow -Wall -Wextra -Wno-incompatible-pointer-types -Wno-unused-parameter -Wno-unused-variable
+KFLAGOJ := -ansi -pedantic -Wshadow -Wall -Wextra -Wno-incompatible-pointer-types -Wno-unused-parameter -Wno-unused-variable
 
 PAKOJ := pakoj
 KONSTRUO := konstruo
 OBJDOSUJO := $(KONSTRUO)/objektoj
-INKLUDATA :=
-BINARO := $(KONSTRUO)/saluto.elf
+BINARO := $(KONSTRUO)/saluto.run
 
 KONDICXOJ := \
-$(OBJDOSUJO)/tabelo_de_charoj.o \
-$(OBJDOSUJO)/saluto.o
+	$(OBJDOSUJO)/tabelo_de_charoj.o \
+	$(OBJDOSUJO)/saluto.o \
+	$(OBJDOSUJO)/cxefo.o
+
 
 cxio: $(BINARO)
 
 include $(PAKOJ)/*/Makefile
+-include $(PAKOJ)/*/*/Makefile
 
 $(BINARO): $(KONDICXOJ) | $(KONSTRUO)
-	$(CK) $(KFLAGOJ) $(INKLUDATA) cxefa.c $(KONDICXOJ) -o $(BINARO)
+	$(CK) $(KFLAGOJ) $(KONDICXOJ) -o $(BINARO)
 
 $(KONSTRUO) $(OBJDOSUJO):
 	mkdir -p $@

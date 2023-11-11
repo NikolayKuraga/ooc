@@ -1,15 +1,5 @@
-#ifndef TABELO_DE_CHAROJ__H
-#define TABELO_DE_CHAROJ__H
-
-
-/*
- * KLASA FARISTO
- * prenas:
- *     tabela longo
- */
-struct TabeloDeCharoj*
-FaruTabelonDeCharoj(
-	const unsigned int longo);
+#ifndef TABELO_DE_CHAROJ_H
+#define TABELO_DE_CHAROJ_H
 
 
 /*
@@ -61,4 +51,14 @@ extern const struct TabeloDeCharoj {
 } TabeloDeCharoj;
 
 
-#endif /* TABELO_DE_CHAROJ__H */
+/*
+ * KLASA FARISTO
+ * prenas:
+ *     tabela longo
+ */
+struct TabeloDeCharoj*
+FaruTabelonDeCharoj(
+	const unsigned int longo);
+
+
+#endif /* TABELO_DE_CHAROJ_H */
