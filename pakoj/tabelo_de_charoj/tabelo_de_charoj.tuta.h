@@ -2,13 +2,23 @@
 #define TABELO_DE_CHAROJ_TUTA_H
 
 
+/*
+ * Cxi tiu cxapdosiero enhavas klasajn publikajn partojn.
+ */
+
+
+#include "objekto.h"
+
 #include "tabelo_de_charoj.h"
 
 
 /*
- * KLASA TUTA STRUKTURO
+ * Klasa strukturo publika.
+ * Estas spaco por publikaj metodoj kaj kampoj.
  */
 extern const struct TabeloDeCharojTuta {
+
+	struct Objekto objekto;
 
 	/* remburajxo estas loko por publikaj metodoj kaj kampoj */
 	struct TabeloDeCharoj remburajxo;
