@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+#include "saluto.h"
+#include "tabelo_de_charoj.h"
+
+
+int main()
+{
+	short cxuAntauxaSimboloEstis = 1;
+	char simbolo = '\n';
+
+	struct Saluto* saluto = FaruSaluton();
+
+	puts("Bonvenon al KuLispo!");
+	puts("Ctrl+d por eliri");
+
+	for (;;) {
+
+		if (simbolo == EOF) {
+			puts("");
+			break;
+		}
+
+		if (simbolo == '\n') {
+			cxuAntauxaSimboloEstis && puts("");
+			cxuAntauxaSimboloEstis = 0;
+			printf("preskaux kutima Lispo> ");
+		} else {
+			putchar(simbolo);
+			cxuAntauxaSimboloEstis = 1;
+		}
+
+		saluto->akiruSekvanCharon(saluto, &simbolo);
+	}
+
+	return 0;
+}

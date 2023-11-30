@@ -7,8 +7,6 @@
  */
 
 
-#include "objekto.h"
-
 #include "tabelo_de_charoj.h"
 
 
@@ -18,7 +16,7 @@
  */
 extern const struct TabeloDeCharojTuta {
 
-	struct Objekto objekto;
+	/* struct Objekto objekto; */
 
 	/* remburajxo estas loko por publikaj metodoj kaj kampoj */
 	struct TabeloDeCharoj remburajxo;

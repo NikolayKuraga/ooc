@@ -1,61 +1,107 @@
-#include "objekto_ena.h"
+#include "objekta_eno.h"
 
 
-/*
- * Cxi tiu tradukunuo enhavas efektivajxo de klasaj kampoj.
- */
+char const *const
+ObjektaIdentigilo = "Objekto";
 
 
 static
 unsigned
-metodoPublika(
-	struct Objekto *memo)
+metodoFasada(
+	struct ObjektaFasado *mi)
 {
-	puts("Objekta metodo publika");
-	((struct ObjektoTuta *) memo)->metodoKasxa(memo);
+	struct ObjektaHeredo *heredo = (struct ObjektaHeredo *) mi;
+
+	puts("Metodo fasada de klaso Objekto.");
+	heredo->metodoKasxa(mi);
+
+	return 0;
+}
+
+static
+unsigned
+estas(
+	struct ObjektaFasado *mi,
+	char const *const identigilo)
+{
+	unsigned i = 0;
+	struct ObjektaFronto *fronto = (struct ObjektaFronto *) mi - 1;
+	struct ObjektaFronto ***mm_identigiloMia =
+		(struct ObjektaFronto ***) fronto;
+	struct ObjektaEno *eno = (
+		(struct ObjektaFronto *)
+		((char *) mi - sizeof(struct ObjektaFronto))
+	)->eno;
+
+	for (i = 0; i < eno->nombroDeIdoj; ++i) {
+		if (strcmp(**((char ***) mm_identigiloMia - i), identigilo)) {
+			continue;
+		}
+		return 1;
+	}
 	return 0;
 }
 
 static
 unsigned
 metodoKasxa(
-	struct Objekto *memo)
+	struct ObjektaFasado *mi)
 {
-	puts("Objekta metodo kasxa");
-	((struct ObjektoEna *) ((struct ObjektoTuta *) memo)->ena)->
-		metodoEna(memo);
+	struct ObjektaEno *eno = (
+		(struct ObjektaFronto *)
+		((char *) mi - sizeof(struct ObjektaFronto))
+	)->eno;
+
+	puts("Metodo kasxa de klaso Objekto.");
+	eno->metodoEna(mi);
+
 	return 0;
 }
 
 static
 unsigned
 metodoEna(
-	struct Objekto *memo)
+	struct ObjektaFasado *mi)
 {
-	puts("Objekta metodo ena");
+	puts("Metodo ena de klaso Objekto.");
 	return 0;
 }
 
 
-struct ObjektoTuta *
-FaruObjektonParte(
-	struct ObjektoTuta *memo)
+struct ObjektaFasado *
+FaruObjektonTien(
+	void *montrilo,
+	unsigned const nombroDeIdoj)
 {
-	memo->ena = calloc(1, sizeof(struct ObjektoEna));
-	if (memo->ena == NULL) { return NULL; }
+	struct ObjektaTuto *tuto = (struct ObjektaTuto *) montrilo;
+	/* struct ObjektaPatroTuto *tutoPatra; */
 
-	((struct Objekto *) memo)->metodoPublika = metodoPublika;
-	memo->metodoKasxa = metodoKasxa;
-	((struct ObjektoEna *) memo->ena)->metodoEna = metodoEna;
 
-	return memo;
+
+
+	/* FaruLaPatronDeObjekto((void *) tutoPatra); */
+
+	tuto->fronto.eno = calloc(1, sizeof(struct ObjektaEno));
+	tuto->fronto.eno->nomo = ObjektaIdentigilo;
+
+	tuto->heredo.fasado.metodoFasada = &metodoFasada;
+	tuto->heredo.fasado.estas = &estas;
+	tuto->heredo.metodoKasxa = &metodoKasxa;
+	tuto->fronto.eno->metodoEna = &metodoEna;
+
+	tuto->fronto.eno->nombroDeIdoj = nombroDeIdoj;
+
+	return (struct ObjektaFasado *)
+		((char *) tuto + sizeof(struct ObjektaFronto));
 }
 
-struct Objekto *
+struct ObjektaFasado *
 FaruObjekton()
 {
-	struct ObjektoTuta *memo = calloc(1, sizeof(struct ObjektoTuta));
-	if (memo == NULL) { return NULL; }
+	struct ObjektaTuto *tuto = calloc(1, sizeof(struct ObjektaTuto));
 
-	return (struct Objekto *) FaruObjektonParte(memo);
+	if (tuto == NULL) { return NULL; }
+	FaruObjektonTien(tuto, 0);
+
+	return &tuto->heredo.fasado;
 }
