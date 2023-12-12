@@ -3,30 +3,21 @@
 
 
 #include "objekta_fasado.h"
+/* #include "heredo_de_objekta_patro.h" */
 
-
-struct ObjektaFronto {
-
-	struct ObjektaEno *eno;
-
-	/* struct FrontoDeObjektaPatro fronto; */
-};
 
 struct ObjektaHeredo {
 
-	struct ObjektaFasado fasado;
-
 	unsigned
 	(*metodoKasxa)(
-		struct ObjektaFasado *mi);
+		struct ObjektaTuto *mi);
 };
 
 
-extern
-struct ObjektaFasado *
+struct ObjektaTuto *
 FaruObjektonTien(
 	void *montrilo,
-	unsigned const nombroDeIdoj);
+	unsigned NombroDeFiloj);
 
 
 #endif /* OBJEKTA_HEREDO_H */

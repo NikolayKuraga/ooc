@@ -1,5 +1,0 @@
-AFEROJ POR PROVI
-
-*) C bit-fields por strukturaj kasxoj
-
-*) offsetof macroo por navigado en strukturo

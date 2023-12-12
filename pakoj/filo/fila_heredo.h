@@ -3,30 +3,21 @@
 
 
 #include "fila_fasado.h"
+#include "objekta_heredo.h"
 
-
-struct FilaFronto {
-
-	struct FilaEno *eno;
-
-	struct ObjektaFronto fronto;
-};
 
 struct FilaHeredo {
 
-	struct FilaFasado fasado;
-
 	unsigned
 	(*metodoKasxa)(
-		struct FilaFasado *memo);
+		struct FilaTuto *mi);
 };
 
 
-extern
-struct FilaFasado *
-FaruFiloTien(
+struct FilaTuto *
+FaruFilonTien(
 	void *montrilo,
-	unsigned const nombroDeIdoj);
+	unsigned NombroDeFiloj);
 
 
 #endif /* FILA_HEREDO_H */

@@ -3,8 +3,8 @@
 #include <stdlib.h>
 
 #include "objekta_fasado.h"
-#include "fila_fasado.h"
 #include "tabelo_de_charoj.h"
+#include "fila_fasado.h"
 
 
 struct Nediso {
@@ -113,44 +113,73 @@ int
 main()
 {
 	char simo = '\0';
-	int rezulto = 0;
+	/* int rezulto = 0; */
 
 	struct TabeloDeCharoj *tabelo = FaruTabelonDeCharoj(10);
-	struct ObjektaFasado *objekto = FaruObjekton();
-	struct FilaFasado *filo = FaruFilon();
-
-	if (objekto == NULL || filo == NULL) {
-		printf("Memora eraro");
-		return -1;
-	}
+	struct ObjektaTuto *objekto = FaruObjekton();
+	struct FilaTuto *filo = FaruFilon();
 
 	puts("");
-	objekto->metodoFasada(objekto);
+	puts("Fasada metodo de Objekto klaso:");
+
+	/* objekto->fasado->metodoFasada(objekto); */
 
 	puts("");
-	filo->metodoFasada(filo);
+	puts("Fasada metodo de Filo klaso:");
+
+	filo->fasado->metodoFasada(filo);
 
 	puts("");
-	((struct ObjektaFasado *) filo)->
-		metodoFasada((struct ObjektaFasado *) filo);
+	puts("Fasada metodo de Filo klaso:");
+
+	/* ((struct ObjektaTuto *) filo)->fasado->metodoFasada( */
+		/* (struct ObjektaTuto *) filo); */
 
 	puts("");
-	rezulto = ((struct ObjektaFasado *) filo)->
-		estas((struct ObjektoFasado *) filo, "lol");
 
-	printf("%d\n", rezulto);
+	printf("%d\n\n", objekto->fasado->estas(objekto, "Filo"));
+	printf(
+		"%d\n\n",
+		((struct ObjektaTuto *) filo)->fasado->estas(
+			(struct ObjektaTuto *) filo,
+			"Filo"));
 
-	puts("");
-	switch (rezulto) {
-	case 1:
-		printf("Filo estas %s!\n", FilaIdentigilo);
-		break;
-	default:
-		printf("Filo ne estas %s!\n", FilaIdentigilo);
-		break;
-	}
+	/* objekto->eno->metodoEna(objekto); */
 
-	puts("");
+	/* struct FilaFasado *filo = FaruFilon(); */
+
+	/* if (objekto == NULL || filo == NULL) { */
+		/* printf("Memora eraro"); */
+		/* return -1; */
+	/* } */
+
+	/* puts(""); */
+	/* objekto->metodoFasada(objekto); */
+
+	/* puts(""); */
+	/* filo->metodoFasada(filo); */
+
+	/* puts(""); */
+	/* ((struct ObjektaFasado *) filo)-> */
+		/* metodoFasada((struct ObjektaFasado *) filo); */
+
+	/* puts(""); */
+	/* rezulto = ((struct ObjektaFasado *) filo)-> */
+		/* estas((struct ObjektoFasado *) filo, "lol"); */
+
+	/* printf("%d\n", rezulto); */
+
+	/* puts(""); */
+	/* switch (rezulto) { */
+	/* case 1: */
+		/* printf("Filo estas %s!\n", FilaIdentigilo); */
+		/* break; */
+	/* default: */
+		/* printf("Filo ne estas %s!\n", FilaIdentigilo); */
+		/* break; */
+	/* } */
+
+	/* puts(""); */
 	/* objekto->metodoKasxa(); */
 	/* objekto->metodoEna(); */
 
@@ -170,7 +199,7 @@ main()
 
 	/* printf("%i\n", objekto->estas(objekto)); */
 
-	puts("Done!");
+	puts("");
 
 	return 0;
 }

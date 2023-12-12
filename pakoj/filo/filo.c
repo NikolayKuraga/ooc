@@ -1,19 +1,15 @@
 #include "fila_eno.h"
 
 
-char const *const
-FilaIdentigilo = "Filo";
-
-
 static
 unsigned
 metodoFasada(
-	struct FilaFasado *fasado)
+	struct FilaTuto *tuto)
 {
-	struct FilaHeredo *heredo = (struct FilaHeredo *) fasado;
-
-	puts("Metodo fasada de klaso Filo.");
-	heredo->metodoKasxa(fasado);
+	printf(
+		"Metodo fasada de klaso, kies identigilo estas '%s'.\n",
+		KLASA_IDENTIGILO);
+	tuto->heredo->metodoKasxa(tuto);
 
 	return 0;
 }
@@ -21,15 +17,12 @@ metodoFasada(
 static
 unsigned
 metodoKasxa(
-	struct FilaFasado *fasado)
+	struct FilaTuto *tuto)
 {
-	struct FilaEno *eno = (
-		(struct FilaFronto *)
-		((char *) fasado - sizeof(struct FilaFronto))
-	)->eno;
-
-	puts("Metodo kasxa de klaso Filo.");
-	eno->metodoEna(fasado);
+	printf(
+		"Metodo kasxa de klaso, kies identigilo estas '%s'.\n",
+		KLASA_IDENTIGILO);
+	tuto->eno->metodoEna(tuto);
 
 	return 0;
 }
@@ -37,44 +30,44 @@ metodoKasxa(
 static
 unsigned
 metodoEna(
-	struct FilaFasado *fasado)
+	struct FilaTuto *tuto)
 {
-	puts("Metodo ena de klaso Filo.");
+	printf(
+		"Metodo ena de klaso, kies identigilo estas '%s'.\n",
+		KLASA_IDENTIGILO);
+
 	return 0;
 }
 
 
-struct FilaFasado *
+struct FilaTuto *
 FaruFilonTien(
 	void *montrilo,
-	unsigned const nombroDeIdoj)
+	unsigned NombroDeFiloj)
 {
 	struct FilaTuto *tuto = (struct FilaTuto *) montrilo;
-	void *tutoPatra =
-		(char *) tuto +
-		sizeof(tuto->fronto) -
-		sizeof(tuto->fronto.fronto);
+	FaruObjektonTien((struct ObjektaTuto *) tuto, NombroDeFiloj + 1);
 
-	FaruObjektonTien(tutoPatra, nombroDeIdoj + 1);
+	tuto->eno = malloc(
+		sizeof *tuto->eno +
+		sizeof *tuto->heredo +
+		sizeof *tuto->fasado);
+	tuto->heredo = (struct FilaHeredo *) (tuto->eno + 1);
+	tuto->fasado = (struct FilaFasado *) (tuto->heredo + 1);
 
-	tuto->fronto.eno = calloc(1, sizeof(struct FilaEno));
-	tuto->fronto.eno->nomo = FilaIdentigilo;
+	tuto->eno->metodoEna = metodoEna;
+	tuto->eno->identigilo = KLASA_IDENTIGILO;
 
-	tuto->heredo.fasado.metodoFasada = &metodoFasada;
-	tuto->heredo.metodoKasxa = &metodoKasxa;
-	tuto->fronto.eno->metodoEna = &metodoEna;
+	tuto->heredo->metodoKasxa = metodoKasxa;
 
-	return (struct FilaFasado *)
-		((char *) tuto + sizeof(struct FilaFronto));
+	tuto->fasado->metodoFasada = metodoFasada;
+
+	return tuto;
 }
 
-struct FilaFasado *
+
+struct FilaTuto *
 FaruFilon()
 {
-	struct FilaTuto *tuto = calloc(1, sizeof(struct FilaTuto));
-
-	if (tuto == NULL) { return NULL; }
-	FaruFilonTien(tuto, 1);
-
-	return &tuto->heredo.fasado;
+	return FaruFilonTien(malloc(sizeof(struct FilaTuto)), 0);
 }

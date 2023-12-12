@@ -2,27 +2,15 @@
 #define FILA_FASADO_H
 
 
-#include "objekta_heredo.h"
-
-
-extern
-char const *const
-FilaIdentigilo;
+#include "fila_tuto.h"
 
 
 struct FilaFasado {
 
-	struct ObjektaHeredo heredo;
-
 	unsigned
 	(*metodoFasada)(
-		struct FilaFasado *mi);
+		struct FilaTuto *mi);
 };
-
-
-extern
-struct FilaFasado *
-FaruFilon();
 
 
 #endif /* FILA_FASADO_H */

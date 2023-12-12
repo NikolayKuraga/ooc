@@ -2,32 +2,16 @@
 #define OBJEKTA_FASADO_H
 
 
-/* #include "heredo_de_objekta_patro.h" */
-
-
-extern
-char const *const
-ObjektaIdentigilo;
+#include "objekta_tuto.h"
 
 
 struct ObjektaFasado {
 
-	/* struct HeredoDeObjektaPatro heredo; */
-
-	unsigned
-	(*metodoFasada)(
-		struct ObjektaFasado *mi);
-
 	unsigned
 	(*estas)(
-		struct ObjektaFasado *mi,
+		struct ObjektaTuto *mi,
 		char const *const identigilo);
 };
-
-
-extern
-struct ObjektaFasado *
-FaruObjekton();
 
 
 #endif /* OBJEKTA_FASADO_H */

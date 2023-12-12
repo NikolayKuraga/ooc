@@ -1,43 +1,19 @@
 #include "objekta_eno.h"
 
 
-char const *const
-ObjektaIdentigilo = "Objekto";
-
-
-static
-unsigned
-metodoFasada(
-	struct ObjektaFasado *mi)
-{
-	struct ObjektaHeredo *heredo = (struct ObjektaHeredo *) mi;
-
-	puts("Metodo fasada de klaso Objekto.");
-	heredo->metodoKasxa(mi);
-
-	return 0;
-}
-
 static
 unsigned
 estas(
-	struct ObjektaFasado *mi,
+	struct ObjektaTuto *tuto,
 	char const *const identigilo)
 {
-	unsigned i = 0;
-	struct ObjektaFronto *fronto = (struct ObjektaFronto *) mi - 1;
-	struct ObjektaFronto ***mm_identigiloMia =
-		(struct ObjektaFronto ***) fronto;
-	struct ObjektaEno *eno = (
-		(struct ObjektaFronto *)
-		((char *) mi - sizeof(struct ObjektaFronto))
-	)->eno;
+	struct ObjektaTuto *i = NULL;
+	struct ObjektaTuto *limo = tuto + tuto->eno->nombroDeFiloj + 1;
 
-	for (i = 0; i < eno->nombroDeIdoj; ++i) {
-		if (strcmp(**((char ***) mm_identigiloMia - i), identigilo)) {
-			continue;
+	for (i = tuto; i < limo; ++i) {
+		if (!strcmp(i->eno->identigilo, identigilo)) {
+			return 1;
 		}
-		return 1;
 	}
 	return 0;
 }
@@ -45,15 +21,12 @@ estas(
 static
 unsigned
 metodoKasxa(
-	struct ObjektaFasado *mi)
+	struct ObjektaTuto *tuto)
 {
-	struct ObjektaEno *eno = (
-		(struct ObjektaFronto *)
-		((char *) mi - sizeof(struct ObjektaFronto))
-	)->eno;
-
-	puts("Metodo kasxa de klaso Objekto.");
-	eno->metodoEna(mi);
+	printf(
+		"Metodo kasxa de klaso, kies identigilo estas '%s'.\n",
+		KLASA_IDENTIGILO);
+	tuto->eno->metodoEna(tuto);
 
 	return 0;
 }
@@ -61,47 +34,45 @@ metodoKasxa(
 static
 unsigned
 metodoEna(
-	struct ObjektaFasado *mi)
+	struct ObjektaTuto *tuto)
 {
-	puts("Metodo ena de klaso Objekto.");
+	printf(
+		"Metodo ena de klaso, kies identigilo estas '%s'.\n",
+		KLASA_IDENTIGILO);
+
 	return 0;
 }
 
 
-struct ObjektaFasado *
+struct ObjektaTuto *
 FaruObjektonTien(
 	void *montrilo,
-	unsigned const nombroDeIdoj)
+	unsigned nombroDeFiloj)
 {
 	struct ObjektaTuto *tuto = (struct ObjektaTuto *) montrilo;
-	/* struct ObjektaPatroTuto *tutoPatra; */
+	/* FaruObjektanPatronTien(); */
 
+	tuto->eno = malloc(
+		sizeof *tuto->eno +
+		sizeof *tuto->heredo +
+		sizeof *tuto->fasado);
+	tuto->heredo = (struct ObjektaHeredo *) (tuto->eno + 1);
+	tuto->fasado = (struct ObjektaFasado *) (tuto->heredo + 1);
 
+	tuto->eno->metodoEna = metodoEna;
+	tuto->eno->identigilo = KLASA_IDENTIGILO;
+	tuto->eno->nombroDeFiloj = nombroDeFiloj;
 
+	tuto->heredo->metodoKasxa = metodoKasxa;
 
-	/* FaruLaPatronDeObjekto((void *) tutoPatra); */
+	tuto->fasado->estas = estas;
 
-	tuto->fronto.eno = calloc(1, sizeof(struct ObjektaEno));
-	tuto->fronto.eno->nomo = ObjektaIdentigilo;
-
-	tuto->heredo.fasado.metodoFasada = &metodoFasada;
-	tuto->heredo.fasado.estas = &estas;
-	tuto->heredo.metodoKasxa = &metodoKasxa;
-	tuto->fronto.eno->metodoEna = &metodoEna;
-
-	tuto->fronto.eno->nombroDeIdoj = nombroDeIdoj;
-
-	return (struct ObjektaFasado *)
-		((char *) tuto + sizeof(struct ObjektaFronto));
+	return tuto;
 }
 
-struct ObjektaFasado *
+
+struct ObjektaTuto *
 FaruObjekton()
 {
-	struct ObjektaTuto *tuto = calloc(1, sizeof(struct ObjektaTuto));
-
-	if (tuto == NULL) { return NULL; }
-	FaruObjektonTien(tuto, 0);
-
-	return &tuto->heredo.fasado;
+	return FaruObjektonTien(malloc(sizeof(struct ObjektaTuto)), 0);
 }

@@ -5,29 +5,23 @@
 #include "objekta_heredo.h"
 
 
-struct ObjektaTuto {
-
-	struct ObjektaFronto fronto;
-
-	struct ObjektaHeredo heredo;
-
-} ObjektaTutoNula = {0};
-
 struct ObjektaEno {
 
-	char const *nomo;
-
-	unsigned nombroDeIdoj;
+	char const *identigilo;
+	unsigned nombroDeFiloj;
 
 	unsigned
 	(*metodoEna)(
-		struct ObjektaFasado *mi);
+		struct ObjektaTuto *mi);
 };
 
 
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+
+
+#define KLASA_IDENTIGILO "Objekto"
 
 
 #endif /* OBJEKTA_ENO_H */

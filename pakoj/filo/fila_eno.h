@@ -5,26 +5,21 @@
 #include "fila_heredo.h"
 
 
-struct FilaTuto {
-
-	struct FilaFronto fronto;
-
-	struct FilaHeredo heredo;
-
-} FilaTutoNula = {0};
-
 struct FilaEno {
 
-	char const *nomo;
+	char const *identigilo;
 
 	unsigned
 	(*metodoEna)(
-		struct FilaFasado *memo);
+		struct FilaTuto *mi);
 };
 
 
 #include <stdio.h>
 #include <stdlib.h>
+
+
+#define KLASA_IDENTIGILO "Filo"
 
 
 #endif /* FILA_ENO_H */

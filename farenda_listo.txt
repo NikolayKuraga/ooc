@@ -1,0 +1,14 @@
+(*) Modifu konstrusisteman por forigi troan evidentan "objekto/objekta_io"
+en cxia dosierindiko. Konsekvence (evidente :P) konsideru kunmeti
+dosierujan (ne dosieran) indikon kaj oblikvon en cxia Makefile-a variablo.
+
+(*) Modifu tuton strukturon, kiel kampujo por klasaj konstantoj (ekz.
+identigilo). Difinu kaj initu objekton de tuto strukturo, kiel enhavas nulajn
+montrilojn al fasado, heredo kaj eno, sed enhavas statikajn konstantoj.
+
+(*) Realigu aserton por kontroli, kio cxiu tuto havas la sama grandeco.
+
+() Esploru offsetof macroo por navigado en strukturo.
+
+() Substituu vorto "kaj" per signo "k" cxie.
+
