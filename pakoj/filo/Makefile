@@ -1,7 +1,5 @@
-$(OBJDOSUJO)/filo.o: \
-pakoj/filo/filo.c \
-pakoj/filo/fil* \
-$(OBJDOSUJO)/objekto.o \
-| $(OBJDOSUJO)
-
-	$(CK) $(KFLAGOJ) -c $< -I pakoj/objekto/ -o $@
+$(OBJDOSUJO)filo.o: \
+$(PAKOJ)filo/*.c \
+$(PAKOJ)filo/*.h \
+$(OBJDOSUJO)objekto.o
+	$(CK) $(KFLAGOJ) -c $< -o $@

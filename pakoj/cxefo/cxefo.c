@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "objekta_fasado.h"
+#include "objekto/fasado.h"
 #include "tabelo_de_charoj.h"
-#include "fila_fasado.h"
+#include "filo/fasado.h"
 
 
 struct Nediso {

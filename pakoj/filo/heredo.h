@@ -2,8 +2,8 @@
 #define FILA_HEREDO_H
 
 
-#include "fila_fasado.h"
-#include "objekta_heredo.h"
+#include "fasado.h"
+#include "objekto/heredo.h"
 
 
 struct FilaHeredo {

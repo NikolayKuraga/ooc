@@ -1,4 +1,4 @@
-#include "objekta_eno.h"
+#include "eno.h"
 
 
 static

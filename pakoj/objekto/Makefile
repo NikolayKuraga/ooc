@@ -1,5 +1,5 @@
-$(OBJDOSUJO)/objekto.o: \
-pakoj/objekto/objekto.c \
-pakoj/objekto/objekt* \
+$(OBJDOSUJO)objekto.o: \
+$(PAKOJ)objekto/*.c \
+$(PAKOJ)objekto/*.h \
 | $(OBJDOSUJO)
-	$(CK) $(KFLAGOJ) -Wno-unused-parameter -c $< -o $@
+	$(CK) $(KFLAGOJ) -c $< -o $@

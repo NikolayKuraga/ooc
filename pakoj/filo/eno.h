@@ -2,7 +2,7 @@
 #define FILA_ENO_H
 
 
-#include "fila_heredo.h"
+#include "heredo.h"
 
 
 struct FilaEno {

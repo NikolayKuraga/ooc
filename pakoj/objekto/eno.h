@@ -2,7 +2,7 @@
 #define OBJEKTA_ENO_H
 
 
-#include "objekta_heredo.h"
+#include "heredo.h"
 
 
 struct ObjektaEno {

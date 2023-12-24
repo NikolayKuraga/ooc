@@ -2,7 +2,7 @@
 #define OBJEKTA_HEREDO_H
 
 
-#include "objekta_fasado.h"
+#include "fasado.h"
 /* #include "heredo_de_objekta_patro.h" */
 
 

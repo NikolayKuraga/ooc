@@ -1,12 +1,12 @@
-$(OBJDOSUJO)/cxefo.o: \
-pakoj/cxefo/cxefo.c \
-pakoj/cxefo/cxef* \
-$(OBJDOSUJO)/objekto.o \
-$(OBJDOSUJO)/filo.o \
+$(OBJDOSUJO)cxefo.o: \
+$(PAKOJ)cxefo/cxefo.c \
+$(PAKOJ)cxefo/cxef* \
+$(OBJDOSUJO)objekto.o \
+$(OBJDOSUJO)filo.o \
 | $(OBJDOSUJO)
 
 	$(CK) $(KFLAGOJ) -c $< \
-	-I pakoj/tabelo_de_charoj/ \
-	-I pakoj/objekto/ \
-	-I pakoj/filo/ \
+	-I $(PAKOJ)tabelo_de_charoj/ \
+	-I $(PAKOJ)objekto/ \
+	-I $(PAKOJ)filo/ \
 	-o $@

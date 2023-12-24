@@ -2,7 +2,7 @@
 #define FILA_TUTO_H
 
 
-#include "objekta_tuto.h"
+#include "objekto/tuto.h"
 
 
 struct FilaEno;

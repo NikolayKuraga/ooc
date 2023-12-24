@@ -2,7 +2,7 @@
 #define OBJEKTA_FASADO_H
 
 
-#include "objekta_tuto.h"
+#include "tuto.h"
 
 
 struct ObjektaFasado {
